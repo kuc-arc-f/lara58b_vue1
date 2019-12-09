@@ -20,6 +20,8 @@
 	<script src="https://unpkg.com/axios/dist/axios.min.js"></script>    
 </head>
 <body>
-    @yield('content')
+    <div class="container">
+        @yield('content')
+    </div>
 </body>
 </html>

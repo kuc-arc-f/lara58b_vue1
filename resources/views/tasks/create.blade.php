@@ -11,11 +11,18 @@
     ]) !!}
     {!! Form::close() !!}   
     <div class="form-group">
-        {!! Form::label('name', 'タスク名', ['class' => 'col-sm-3 control-label']) !!}
+        {!! Form::label('title', 'タスク名', ['class' => 'col-sm-3 control-label']) !!}
         <div class="col-sm-6">
-            <input type="text" class="form-control" id="name" v-model="name">
+            <input type="text" class="form-control" id="title" v-model="title">
         </div>
     </div>
+    <div class="form-group">
+        {!! Form::label('content', 'content', ['class' => 'col-sm-3 control-label']) !!}
+        <div class="col-sm-6">
+            <input type="text" class="form-control" id="content" v-model="content">
+        </div>
+    </div>    
+
     <div class="form-group">
         <div class="col-sm-offset-3 col-sm-6">
             <button class="btn btn-outline-primary" v-on:click="send_post">投稿
@@ -30,17 +37,16 @@ new Vue({
     created () {
     },    
     data: {
-        name:'',
-//        content:''        
+        title :'',
+        content: '',
     },
     methods: {
         send_post(){
 //            var token = $('input[name="_token"]').val();
 //console.log(token );            
             var task = {
-                'name': this.name,
-                'complete' : 0,
-//                '_token' : token,
+                'title': this.title,
+                'content': this.content,
             };
             axios.post('/api/tasks/add' , task ).then(res => {
                 console.log(res.data );
