@@ -43,14 +43,13 @@ new Vue({
     methods: {
         send_post(){
 //            var token = $('input[name="_token"]').val();
-//console.log(token );            
             var task = {
                 'title': this.title,
                 'content': this.content,
             };
             axios.post('/api/tasks/add' , task ).then(res => {
                 console.log(res.data );
-//                window.location.href = '/todos';
+                window.location.href = '/tasks';
             });
         },        
     }
