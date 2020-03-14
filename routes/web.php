@@ -14,8 +14,34 @@
 Route::get('/', function () {
     return view('welcome');
 });
-
 //tasks
+//Route::get('/tasks/data1', 'TasksController@data1');
 Route::resource('tasks', 'TasksController');
+//
+Route::resource('books', 'BooksController');
+Route::resource('members', 'MembersController');
+Route::resource('depts', 'DeptsController');
+//
+Route::post('/todos/delete', 'TodosController@delete');
+Route::resource('todos', 'TodosController');
+
+//
+Auth::routes();
+//
+Route::get('/home', 'HomeController@index')->name('home');
+
+/**************************************
+ * API
+ **************************************/
+Route::prefix('api')->group(function(){
+//    Route::get('/apitodos/test1', 'ApiTodosController@test1');
+    Route::post('/apitodos/search', 'ApiTodosController@search');
+    Route::resource('apitodos', 'ApiTodosController' );
+    //tasks
+    Route::post('/apitasks/create_task', 'ApiTasksController@create_task');
+    Route::post('/apitasks/update_post', 'ApiTasksController@update_post');
+    Route::post('/apitasks/delete_task', 'ApiTasksController@delete_task');
+    Route::resource('apitasks', 'ApiTasksController' );
 
 
+});

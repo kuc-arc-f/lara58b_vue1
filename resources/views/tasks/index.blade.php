@@ -42,7 +42,7 @@
             <br />
             <!--
             <a href="make/"  class="btn btn-primary ">詳細はこちら </a>
-             -->
+              -->
         </div>
     </div>
 </div>
@@ -58,7 +58,7 @@ new Vue({
     },
     methods: {
         getTasks (complete) {
-            axios.get('/api/tasks')
+            axios.get('/api/apitasks')
                 .then(res =>  {
                     this.tasks = res.data
 //console.log(res.data )

@@ -35,12 +35,14 @@ new Vue({
     },
     methods: {
         getItem: function() {
-            axios.get('/api/tasks/show/' + {{$task_id}} )
+            axios.get('/api/apitasks/' + {{$task_id}} )
             .then( ( res ) => {
                 this.item = res.data;
                 this.title = this.item.title;
                 this.content = this.item.content;
-//console.log(this.item );
+console.log(this.item  );
+//console.log(this.title  );
+//console.log(this.content  );
             });
         }        
     }
