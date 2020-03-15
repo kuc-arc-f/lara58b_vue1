@@ -32,7 +32,6 @@
 </div>
 <!-- -->
 <script>
-//var token = $('input[name="csrf-token"]').val();
 var token = $('input[name="_token"]').val();
 console.log( token );
 //
@@ -45,14 +44,12 @@ new Vue({
         content: '',
     },
     methods: {
-        //csrf-token
         send_post(){
-            var token = $('input[name="_token"]').val();
-console.log( token );
+//            var token = $('input[name="_token"]').val();
+//console.log( token );
             var task = {
                 'title': this.title,
                 'content': this.content,
-                'csrf-token' : token
             };
             axios.post('/api/apitasks/create_task' , task ).then(res => {
                 console.log(res.data );

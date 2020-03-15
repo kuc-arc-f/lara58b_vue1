@@ -41,7 +41,10 @@ Route::prefix('api')->group(function(){
     Route::post('/apitasks/create_task', 'ApiTasksController@create_task');
     Route::post('/apitasks/update_post', 'ApiTasksController@update_post');
     Route::post('/apitasks/delete_task', 'ApiTasksController@delete_task');
-    Route::resource('apitasks', 'ApiTasksController' );
+    Route::get('/apitasks/get_tasks', 'ApiTasksController@get_tasks');
+    Route::post('/apitasks/get_item', 'ApiTasksController@get_item');
+    //
+//    Route::resource('apitasks', 'ApiTasksController' );
 
 
 });

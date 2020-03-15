@@ -18,6 +18,7 @@ Route::group(['middleware' => 'api'], function() {
      *
      **************************************/    
     Route::get('tasks',  function() {
+//        $tasks = App\Task::all()->take(10);
         $tasks = App\Task::orderBy('id', 'desc')->get();
         return $tasks;
     });
@@ -61,10 +62,5 @@ Route::group(['middleware' => 'api'], function() {
     Route::get('test',  function() {
         return "#test";
     });
-
-
-    //
-//    Route::resource('todos', 'ToDosController', ['only'=>['index', 'store', 'show', 'update', 'destroy']]);
-    Route::resource('todos', 'ApiTodosController');
 
 });

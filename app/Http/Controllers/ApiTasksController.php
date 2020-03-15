@@ -13,10 +13,19 @@ class ApiTasksController extends Controller
     public function __construct(){
         $this->TBL_LIMIT = 500;
     }
+    /*
+    public function index()
+    {   
+        $todos = Task::orderBy('id', 'desc')
+        ->limit($this->TBL_LIMIT)
+        ->get();
+        return response()->json($todos);
+    }
+    */
     /**************************************
      *
      **************************************/
-    public function index()
+    public function get_tasks()
     {   
 //exit();
         $todos = Task::orderBy('id', 'desc')
@@ -24,6 +33,7 @@ class ApiTasksController extends Controller
         ->get();
         return response()->json($todos);
     }
+
     /**************************************
      *
      **************************************/  
@@ -38,11 +48,19 @@ class ApiTasksController extends Controller
     /**************************************
      *
      **************************************/
+    public function get_item(Request $request)
+    {
+        $task = Task::find(request('id'));
+        $ret = ['id'=> request('id') ];
+        return response()->json($task );
+    }
+    /*
     public function show($id)
     {
         $task = Task::find($id);
         return response()->json($task);
     }  
+    */
     /**************************************
      *
      **************************************/

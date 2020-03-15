@@ -58,7 +58,9 @@ new Vue({
     },
     methods: {
         getTasks (complete) {
-            axios.get('/api/apitasks')
+            //get_tasks
+            ///api/apitasks
+            axios.get('/api/apitasks/get_tasks')
                 .then(res =>  {
                     this.tasks = res.data
 //console.log(res.data )

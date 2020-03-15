@@ -64,12 +64,15 @@ new Vue({
     },
     methods: {
         getItem: function() {
-            axios.get('/api/apitasks/' + task_id )
-            .then( ( res ) => {
+            var task = {
+                "id" : {{$task_id}},
+            };
+            axios.post('/api/apitasks/get_item' ,task).then(res => {
                 this.item = res.data;
                 this.title = this.item.title;
                 this.content = this.item.content;
-//console.log(this.item  );
+console.log(this.item  );                
+                console.log(res.data.id );
             });
         },
         postTask(){
@@ -78,7 +81,7 @@ new Vue({
                 'title': this.title,
                 'content': this.content
             };
-            axios.post('/api/apitasks/update_post/' ,task).then(res => {
+            axios.post('/api/apitasks/update_post' ,task).then(res => {
                 console.log(res.data.id );
                 console.log(res.data.title);
                 console.log(res.data.content);
@@ -88,7 +91,7 @@ new Vue({
             var task = {
                 "id" : task_id,
             };
-            axios.post('/api/apitasks/delete_task/' ,task).then(res => {
+            axios.post('/api/apitasks/delete_task' ,task).then(res => {
                 console.log(res.data.id );
                 window.location.href = '/tasks';
             });
